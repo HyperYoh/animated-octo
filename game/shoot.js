@@ -28,8 +28,11 @@ function shoot()
     {
         player1.bullets[i].position.x += moveDistance * Math.cos(player1.bullets[i].angle);
         player1.bullets[i].position.y += moveDistance * Math.sin(player1.bullets[i].angle);
-    }
 
+        if (player1.bullets[i].position.x == player2.graphic.position.x
+        && player1.bullets[i].position.y == player2.graphic.position.y )
+            scene.remove(player2.graphic)
+    }
 }
 
 function collisions()
@@ -106,5 +109,22 @@ function player_falling()
            player1.dead(); //FIXME KONAMI CODE
         }
     }
+}
 
+function enemy_touch()
+{
+    var x1 = player1.graphic.position.x | 0;
+    var y1 = player1.graphic.position.y | 0;
+    var x2 = player2.graphic.position.x | 0;
+    var y2 = player2.graphic.position.y | 0;
+
+    var x1 = player1.position.x | 0;
+    var y1 = player1.position.y | 0;
+    var x2 = player2.position.x | 0;
+    var y2 = player2.position.y | 0;
+
+    if (x1 == x2 && y1 == y2)
+    {
+        player1.dead()
+    }
 }
