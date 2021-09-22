@@ -12,7 +12,18 @@ function update()
         player1.accelerate(moveDistance);
     if (keyboard.pressed("down"))
         player1.decelerate(moveDistance);
-
     player1.move();
+
+
+    if (keyboard.pressed("Q"))
+        player2.turnLeft(rotateAngle);
+    if (keyboard.pressed("D"))
+        player2.turnRight(rotateAngle);
+    if (keyboard.pressed("Z"))
+        player2.accelerate(moveDistance);
+    if (keyboard.pressed("S"))
+        player2.decelerate(moveDistance);
+    player2.move();
+
     controls.update();
 }
